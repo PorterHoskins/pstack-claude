@@ -16,6 +16,7 @@ const fakePiBin = fileURLToPath(new URL("./fake-pi.mjs", import.meta.url));
 
 const fixtureModels = {
   available: ["opus", "fable", "sonnet", "haiku"],
+  efforts: ["low", "medium", "high", "xhigh", "max"],
   pi: {
     fallback: "anthropic",
     models: {
@@ -104,13 +105,7 @@ export function world({ script = {}, sheet = null } = {}) {
     pluginRoot,
     modelsFile,
     agentDir,
-    pi: { command: fakePiBin, args: [] },
-    childEnv: {
-      PATH: process.env.PATH,
-      HOME: root,
-      PSTACK_FAKE_PI_SCRIPT: scriptFile,
-      PSTACK_FAKE_PI_LOG: logFile,
-    },
+    pi: { command: fakePiBin, args: [scriptFile, logFile] },
     depth: 0,
     killGraceMs: 300,
     exitGraceMs: 1500,

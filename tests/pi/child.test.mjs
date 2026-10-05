@@ -5,7 +5,7 @@ import { expect, test } from "bun:test";
 import { PiChild } from "../../plugins/pstack/pi/child.ts";
 import { sleep } from "./harness.mjs";
 
-const opts = { cwd: process.cwd(), env: process.env, exitGraceMs: 1000 };
+const opts = { cwd: process.cwd(), exitGraceMs: 1000 };
 const scripted = (script) => new PiChild(process.execPath, ["-e", script], opts, "p");
 const commandLines = 'require("node:readline").createInterface({ input: process.stdin })';
 
